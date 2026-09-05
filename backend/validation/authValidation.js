@@ -1,7 +1,10 @@
 const Joi = require("joi");
 
 const validateSignup = Joi.object({
-  name: Joi.string().trim().max(50).required(),
+  name: Joi.string()
+    .trim()
+    .max(50)
+    .required(),
 
   email: Joi.string()
     .trim()
@@ -10,10 +13,11 @@ const validateSignup = Joi.object({
     .required(),
 
   password: Joi.string()
-    .min(8)
+    .min(6)
     .max(30)
     .required(),
 });
+
 
 const validateLogin = Joi.object({
   email: Joi.string()
@@ -23,10 +27,11 @@ const validateLogin = Joi.object({
     .required(),
 
   password: Joi.string()
-    .min(8)
+    .min(6)
     .max(30)
     .required(),
 });
+
 
 module.exports = {
   validateSignup,

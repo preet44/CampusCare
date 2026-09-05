@@ -1,17 +1,33 @@
-const AppError = require("../utils/AppError");
+const mongoose = require("mongoose");
 
-const adminMiddleware = (req, res, next) => {
-  if (!req.user) {
-    return next(new AppError("Authentication required.", 401));
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+      maxlength: 50,
+    },
+
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
+
+    password: {
+      type: String,
+      required: true,
+      minlength: 8,
+    },
+  },
+  {
+    timestamps: true,
   }
+);
 
-  if (req.user.role !== "admin") {
-    return next(new AppError("Admin access required.", 403));
-  }
+const User = mongoose.model("User", userSchema);
 
-  req.admin = req.user;
-
-  next();
-};
-
-module.exports = adminMiddleware;
+module.exports = User;

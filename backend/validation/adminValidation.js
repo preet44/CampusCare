@@ -1,30 +1,18 @@
-// const adminLoginValidation=(req,res)=>{
-//     const {email,password}=req.body;
-//     if(!email || !password){
-//         return res.status(400).json({
-//             success:false,
-//             message:"Email and password are required"
-//         });
-//     }
-//     next();
+const joi = require("joi");
 
-// }                                 
+const adminLoginValidation = joi.object({
+    email: joi.string()
+        .trim()
+        .lowercase()
+        .email()
+        .required(),
 
-const Joi = require("joi");
-
-const adminLoginValidation = Joi.object({
-  email: Joi.string()
-    .trim()
-    .lowercase()
-    .email()
-    .required(),
-
-  password: Joi.string()
-    .min(8)
-    .max(30)
-    .required(),
+    password: joi.string()
+        .min(6)
+        .max(30)
+        .required(),
 });
 
 module.exports = {
-  adminLoginValidation,
+    adminLoginValidation,
 };

@@ -21,7 +21,10 @@ const app = express();
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin:[
+             "http://localhost:5173",
+            "https://campuscare-frontend-07rw.onrender.com",
+        ],
         credentials: true,
     })
 );

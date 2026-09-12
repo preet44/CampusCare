@@ -8,8 +8,15 @@ const createAdmin = async () => {
     try {
         await connectDB();
 
-        const email = "admin@campuscare.com";
-        const password = "admin@876";
+        const email = process.env.ADMIN_EMAIL;
+        const password = process.env.ADMIN_PASSWORD;
+
+        // Check if credentials are available
+        if (!email || !password) {
+            throw new Error(
+                "ADMIN_EMAIL and ADMIN_PASSWORD are required in .env"
+            );
+        }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -33,8 +40,8 @@ const createAdmin = async () => {
             console.log("Admin created successfully.");
         }
 
-        console.log("Email:", email);
-        console.log("Password:", password);
+        console.log("Admin email:", email);
+        console.log("Admin password: [hidden]");
 
         process.exit(0);
 

@@ -1,195 +1,158 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 
 function Navbar() {
-  const { user, logout } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-  return (
-    <nav className="navbar navbar-expand-lg campus-navbar">
+    const [menuOpen, setMenuOpen] = useState(false);
 
-      <div className="container">
+    const handleLogout = async () => {
+        await logout();
+        setMenuOpen(false);
+        navigate("/login");
+    };
 
-        {/* ================= LOGO ================= */}
+    const closeMenu = () => {
+        setMenuOpen(false);
+    };
 
-        <Link
-          to="/"
-          className="navbar-brand campus-brand d-flex align-items-center gap-2"
-        >
+    return (
+        <nav className="navbar navbar-expand-lg campus-navbar fixed-top">
+            <div className="container-fluid px-3 px-lg-4">
 
-          <span className="campus-logo">
-            <span className="logo-check">✓</span>
-          </span>
-
-          <span className="fw-bold fs-4 text-white">
-            Campus<span className="text-primary">Care</span>
-          </span>
-
-        </Link>
-
-
-        {/* ================= MOBILE MENU ================= */}
-
-        <button
-          className="navbar-toggler border-0 shadow-none"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#campusNavbar"
-          aria-controls="campusNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-
-          <span className="navbar-toggler-icon"></span>
-
-        </button>
-
-
-        {/* ================= NAVIGATION ================= */}
-
-        <div
-          className="collapse navbar-collapse"
-          id="campusNavbar"
-        >
-
-          <div className="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-
-
-            {/* =================================================
-                PUBLIC NAVIGATION
-            ================================================= */}
-
-            {!user && (
-              <>
-
+                {/* Logo */}
                 <Link
-                  to="/"
-                  className="nav-link campus-nav-link"
+                    to="/"
+                    className="navbar-brand campus-navbar-brand"
+                    onClick={closeMenu}
                 >
-                  Home
+                    <span className="campus-navbar-logo">
+                        ✓
+                    </span>
+
+                    <span className="campus-navbar-name">
+                        Campus<span>Care</span>
+                    </span>
                 </Link>
 
 
-                <a
-                  href="/#how-it-works"
-                  className="nav-link campus-nav-link"
-                >
-                  How It Works
-                </a>
-
-
-                <Link
-                  to="/login"
-                  className="nav-link campus-nav-link"
-                >
-                  Login
-                </Link>
-
-
-                <Link
-                  to="/register"
-                  className="btn btn-primary rounded-pill px-4 ms-lg-2 campus-nav-btn"
-                >
-                  Get Started
-                </Link>
-
-
-                <Link
-                  to="/admin-login"
-                  className="btn btn-outline-light rounded-pill px-4 ms-lg-2 campus-nav-btn"
-                >
-                  Admin
-                </Link>
-
-              </>
-            )}
-
-
-            {/* =================================================
-                STUDENT NAVIGATION
-            ================================================= */}
-
-            {user && user.role !== "admin" && (
-              <>
-
-                <Link
-                  to="/student-dashboard"
-                  className="nav-link campus-nav-link"
-                >
-                  Dashboard
-                </Link>
-
-
-                <Link
-                  to="/my-complaints"
-                  className="nav-link campus-nav-link"
-                >
-                  My Complaints
-                </Link>
-
-
-                <Link
-                  to="/create-complaint"
-                  className="btn btn-primary rounded-pill px-4 ms-lg-2 campus-nav-btn"
-                >
-                  New Complaint
-                </Link>
-
-
+                {/* Hamburger Button */}
                 <button
-                  type="button"
-                  onClick={logout}
-                  className="btn btn-outline-light rounded-pill px-4 ms-lg-2 campus-nav-btn"
+                    className={`navbar-toggler campus-navbar-toggler ${
+                        menuOpen ? "menu-open" : ""
+                    }`}
+                    type="button"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Toggle navigation"
+                    aria-expanded={menuOpen}
                 >
-                  Logout
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
 
-              </>
-            )}
 
-
-            {/* =================================================
-                ADMIN NAVIGATION
-            ================================================= */}
-
-            {user && user.role === "admin" && (
-              <>
-
-                <Link
-                  to="/admin-dashboard"
-                  className="nav-link campus-nav-link"
+                {/* Navigation */}
+                <div
+                    className={`campus-navbar-menu ${
+                        menuOpen ? "show" : ""
+                    }`}
                 >
-                  Dashboard
-                </Link>
 
+                    <div className="campus-navbar-links">
 
-                <Link
-                  to="/manage-complaints"
-                  className="nav-link campus-nav-link"
-                >
-                  Manage Complaints
-                </Link>
+                        {user ? (
+                            <>
+                                {user.role === "admin" ? (
+                                    <>
+                                        <Link
+                                            to="/admin-dashboard"
+                                            className="campus-nav-link"
+                                            onClick={closeMenu}
+                                        >
+                                            Dashboard
+                                        </Link>
 
+                                        <Link
+                                            to="/manage-complaints"
+                                            className="campus-nav-link"
+                                            onClick={closeMenu}
+                                        >
+                                            Manage Complaints
+                                        </Link>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link
+                                            to="/student-dashboard"
+                                            className="campus-nav-link"
+                                            onClick={closeMenu}
+                                        >
+                                            Dashboard
+                                        </Link>
 
-                <button
-                  type="button"
-                  onClick={logout}
-                  className="btn btn-outline-light rounded-pill px-4 ms-lg-2 campus-nav-btn"
-                >
-                  Logout
-                </button>
+                                        <Link
+                                            to="/create-complaint"
+                                            className="campus-nav-link"
+                                            onClick={closeMenu}
+                                        >
+                                            Create Complaint
+                                        </Link>
 
-              </>
-            )}
+                                        <Link
+                                            to="/my-complaints"
+                                            className="campus-nav-link"
+                                            onClick={closeMenu}
+                                        >
+                                            My Complaints
+                                        </Link>
+                                    </>
+                                )}
 
-          </div>
+                                <button
+                                    type="button"
+                                    className="campus-nav-logout"
+                                    onClick={handleLogout}
+                                >
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link
+                                    to="/login"
+                                    className="campus-nav-link"
+                                    onClick={closeMenu}
+                                >
+                                    Login
+                                </Link>
 
-        </div>
+                                <Link
+                                    to="/register"
+                                    className="campus-nav-link"
+                                    onClick={closeMenu}
+                                >
+                                    Register
+                                </Link>
 
-      </div>
+                                <Link
+                                    to="/admin-login"
+                                    className="campus-nav-admin"
+                                    onClick={closeMenu}
+                                >
+                                    Admin
+                                </Link>
+                            </>
+                        )}
 
-    </nav>
-  );
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    );
 }
 
 export default Navbar;

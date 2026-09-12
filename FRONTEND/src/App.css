@@ -3258,3 +3258,562 @@ section.py-5.bg-light .d-flex.align-items-start.gap-3 .text-primary {
     animation-iteration-count: 1 !important;
   }
 }
+/* =========================================================
+   RESPONSIVE CAMPUSCARE NAVBAR
+   ========================================================= */
+
+.campus-navbar {
+    min-height: 76px;
+    background: #172033;
+    z-index: 1050;
+    padding: 8px 0;
+}
+
+/* Logo */
+
+.campus-navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white !important;
+    font-weight: 700;
+}
+
+.campus-navbar-logo {
+    width: 62px;
+    height: 62px;
+    border-radius: 18px;
+    background: #0d6efd;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1;
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.25);
+}
+
+.campus-navbar-name {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.campus-navbar-name span {
+    color: #0d6efd;
+}
+
+
+/* Desktop navigation */
+
+.campus-navbar-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.campus-navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.campus-nav-link {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.campus-nav-link:hover {
+    color: #0d6efd !important;
+}
+
+.campus-nav-admin {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.campus-nav-admin:hover {
+    background: white;
+    color: #172033;
+}
+
+
+/* Logout */
+
+.campus-nav-logout {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    border-radius: 30px;
+    padding: 11px 30px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.campus-nav-logout:hover {
+    background: white;
+    color: #172033;
+}
+
+
+/* Hamburger */
+
+.campus-navbar-toggler {
+    width: 48px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    border-radius: 10px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+}
+
+.campus-navbar-toggler span {
+    width: 23px;
+    height: 2px;
+    background: white;
+    border-radius: 5px;
+    transition: 0.25s ease;
+}
+
+.campus-navbar-toggler:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .campus-navbar {
+        min-height: 70px;
+    }
+
+    .campus-navbar-logo {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
+        font-size: 31px;
+    }
+
+    .campus-navbar-name {
+        font-size: 27px;
+    }
+
+    .campus-navbar-toggler {
+        display: flex;
+    }
+
+    .campus-navbar-menu {
+        display: none;
+        width: 100%;
+        margin-left: 0;
+        padding: 15px 0 8px;
+    }
+
+    .campus-navbar-menu.show {
+        display: block;
+    }
+
+    .campus-navbar-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        padding: 10px 0;
+    }
+
+    .campus-nav-link {
+        display: block;
+        width: 100%;
+        padding: 13px 15px;
+        border-radius: 8px;
+        font-size: 17px;
+    }
+
+    .campus-nav-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .campus-nav-admin,
+    .campus-nav-logout {
+        width: 100%;
+        text-align: center;
+        margin-top: 6px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575px) {
+
+    .campus-navbar {
+        min-height: 64px;
+        padding: 6px 0;
+    }
+
+    .campus-navbar-brand {
+        gap: 8px;
+    }
+
+    .campus-navbar-logo {
+        width: 45px;
+        height: 45px;
+        border-radius: 13px;
+        font-size: 27px;
+    }
+
+    .campus-navbar-name {
+        font-size: 23px;
+        letter-spacing: -0.5px;
+    }
+
+    .campus-navbar-toggler {
+        width: 44px;
+        height: 42px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .campus-navbar-name {
+        font-size: 21px;
+    }
+
+    .campus-navbar-logo {
+        width: 42px;
+        height: 42px;
+        font-size: 25px;
+    }
+
+    .campus-navbar-toggler {
+        width: 42px;
+    }
+
+}
+/* =========================================================
+   RESPONSIVE NAVBAR
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .campus-navbar {
+        min-height: 70px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1050;
+    }
+
+    /* Logo */
+
+    .campus-navbar-logo {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
+        font-size: 31px;
+    }
+
+    .campus-navbar-name {
+        font-size: 27px;
+    }
+
+
+    /* Hamburger */
+
+    .campus-navbar-toggler {
+        display: flex;
+        width: 48px;
+        height: 44px;
+
+        border: 1px solid rgba(255, 255, 255, 0.7) !important;
+        border-radius: 10px;
+
+        padding: 8px;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 5px;
+
+        background: #172033;
+    }
+
+    .campus-navbar-toggler span {
+        display: block;
+        width: 23px;
+        height: 2px;
+
+        background: white;
+        border-radius: 5px;
+
+        transition: 0.25s ease;
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
+
+    .campus-navbar-menu {
+
+        /* IMPORTANT */
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        background: #172033;
+
+        padding: 10px 18px 18px;
+
+        margin: 0;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+
+        z-index: 1100;
+    }
+
+
+    /* When hamburger is clicked */
+
+    .campus-navbar-menu.show {
+        display: block;
+    }
+
+
+    /* Navigation links */
+
+    .campus-navbar-links {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 4px;
+
+        padding: 5px 0;
+    }
+
+
+    .campus-nav-link {
+
+        display: block;
+
+        width: 100%;
+
+        color: white !important;
+
+        text-decoration: none;
+
+        font-size: 17px;
+
+        font-weight: 500;
+
+        padding: 13px 15px;
+
+        border-radius: 8px;
+
+        transition: 0.25s ease;
+    }
+
+
+    .campus-nav-link:hover {
+
+        background: rgba(255, 255, 255, 0.08);
+
+        color: #0d6efd !important;
+    }
+
+
+    /* Admin button */
+
+    .campus-nav-admin {
+
+        display: block;
+
+        width: 100%;
+
+        text-align: center;
+
+        margin-top: 8px;
+
+        padding: 11px 20px;
+
+        border: 1px solid white;
+
+        border-radius: 30px;
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 16px;
+    }
+
+
+    /* Logout button */
+
+    .campus-nav-logout {
+
+        width: 100%;
+
+        margin-top: 8px;
+
+        padding: 11px 20px;
+
+        border: 1px solid white;
+
+        border-radius: 30px;
+
+        background: transparent;
+
+        color: white;
+
+        font-size: 16px;
+
+        font-weight: 500;
+
+        cursor: pointer;
+
+        transition: 0.25s ease;
+    }
+
+
+    .campus-nav-logout:hover {
+
+        background: white;
+
+        color: #172033;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575px) {
+
+    .campus-navbar {
+
+        min-height: 64px;
+
+        padding: 6px 0;
+    }
+
+
+    .campus-navbar-brand {
+
+        gap: 8px;
+    }
+
+
+    .campus-navbar-logo {
+
+        width: 45px;
+        height: 45px;
+
+        border-radius: 13px;
+
+        font-size: 27px;
+    }
+
+
+    .campus-navbar-name {
+
+        font-size: 23px;
+
+        letter-spacing: -0.5px;
+    }
+
+
+    .campus-navbar-toggler {
+
+        width: 44px;
+        height: 42px;
+    }
+
+
+    .campus-navbar-menu {
+
+        padding: 10px 15px 16px;
+    }
+
+
+    .campus-nav-link {
+
+        font-size: 16px;
+
+        padding: 12px 14px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .campus-navbar-name {
+
+        font-size: 21px;
+    }
+
+
+    .campus-navbar-logo {
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 25px;
+    }
+
+
+    .campus-navbar-toggler {
+
+        width: 42px;
+    }
+}

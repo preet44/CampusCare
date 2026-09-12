@@ -83,7 +83,7 @@ function AdminDashboard() {
 
   {/* TOTAL */}
 
-  <div className="col-3">
+  <div className="col-12 col-md-6">
 
     <motion.div
       className="dashboard-stat-card"
@@ -120,7 +120,7 @@ function AdminDashboard() {
 
   {/* PENDING */}
 
-  <div className="col-3">
+  <div className="col-12 col-md-6">
 
     <motion.div
       className="dashboard-stat-card"
@@ -157,7 +157,7 @@ function AdminDashboard() {
 
   {/* IN PROGRESS */}
 
-  <div className="col-3">
+  <div className="col-12 col-md-6">
 
     <motion.div
       className="dashboard-stat-card"
@@ -194,7 +194,7 @@ function AdminDashboard() {
 
   {/* RESOLVED */}
 
-  <div className="col-3">
+  <div className="col-12 col-md-6">
 
     <motion.div
       className="dashboard-stat-card"

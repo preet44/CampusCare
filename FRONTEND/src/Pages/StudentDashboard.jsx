@@ -79,7 +79,7 @@ function StudentDashboard() {
 
         {/* TOTAL */}
 
-        <div className="col-3">
+        <div className="col-12 col-md-6">
 
           <motion.div
             className="dashboard-stat-card"
@@ -116,7 +116,7 @@ function StudentDashboard() {
 
         {/* PENDING */}
 
-        <div className="col-3">
+        <div className="col-12 col-md-6">
 
           <motion.div
             className="dashboard-stat-card"
@@ -153,7 +153,7 @@ function StudentDashboard() {
 
         {/* IN PROGRESS */}
 
-        <div className="col-3">
+        <div className="col-12 col-md-6">
 
           <motion.div
             className="dashboard-stat-card"
@@ -190,7 +190,7 @@ function StudentDashboard() {
 
         {/* RESOLVED */}
 
-        <div className="col-3">
+        <div className="col-12 col-md-6">
 
           <motion.div
             className="dashboard-stat-card"

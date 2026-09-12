@@ -41,31 +41,7 @@ a {
 .campus-brand:hover {
   transform: translateY(-1px);
 }
-.campus-logo {
-  width: 42px;
-  height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: #0d6efd;
-  border-radius: 12px;
-  flex-shrink: 0;
-  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.25);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-.campus-logo::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 7px;
-  width: 9px;
-  height: 9px;
-  background-color: #0d6efd;
-  transform: rotate(45deg);
-}
+
 .logo-check {
   position: relative;
   z-index: 2;
@@ -240,16 +216,6 @@ a {
 }
 .sidebar-help small {
   line-height: 1.5;
-}
-.student-main {
-  height: calc(100vh - 76px);
-  margin-left: 270px;
-  width: auto;
-  padding: 28px 36px 40px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  overscroll-behavior: contain;
-  scroll-behavior: smooth;
 }
 .dashboard-page {
   width: 100%;
@@ -3281,9 +3247,9 @@ section.py-5.bg-light .d-flex.align-items-start.gap-3 .text-primary {
 }
 
 .campus-navbar-logo {
-    width: 62px;
-    height: 62px;
-    border-radius: 18px;
+    width: 45px;
+    height: 45px;
+    border-radius: 15px;
     background: #0d6efd;
     color: white;
     display: flex;
@@ -3408,8 +3374,8 @@ section.py-5.bg-light .d-flex.align-items-start.gap-3 .text-primary {
     }
 
     .campus-navbar-logo {
-        width: 52px;
-        height: 52px;
+        width: 62px;
+        height: 62px;
         border-radius: 15px;
         font-size: 31px;
     }
@@ -3479,12 +3445,12 @@ section.py-5.bg-light .d-flex.align-items-start.gap-3 .text-primary {
         gap: 8px;
     }
 
-    .campus-navbar-logo {
-        width: 45px;
-        height: 45px;
+    /* .campus-navbar-logo {
+        width: 55px;
+        height: 55px;
         border-radius: 13px;
         font-size: 27px;
-    }
+    } */
 
     .campus-navbar-name {
         font-size: 23px;
@@ -3816,4 +3782,548 @@ section.py-5.bg-light .d-flex.align-items-start.gap-3 .text-primary {
 
         width: 42px;
     }
+}
+
+/* =========================================================
+   FINAL PAGE SCROLL FIX
+   Student + Admin Dashboard Pages
+   ========================================================= */
+
+/* Allow the entire document to scroll */
+html,
+body,
+#root {
+    min-height: 100%;
+    height: auto;
+}
+
+html {
+    overflow-y: auto;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   STUDENT LAYOUT
+   ========================================================= */
+
+.student-layout {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+}
+
+.student-layout-body {
+    min-height: calc(100vh - 76px);
+    height: auto;
+    overflow: visible;
+}
+
+.student-main {
+    min-height: calc(100vh - 76px);
+    height: auto;
+
+    margin-left: 270px;
+
+    padding: 28px 36px 50px;
+
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+
+/* =========================================================
+   ADMIN LAYOUT
+   ========================================================= */
+
+.admin-layout {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+}
+
+.admin-main {
+    min-height: calc(100vh - 76px);
+    height: auto;
+
+    margin-left: 270px;
+
+    padding: 28px 36px 50px;
+
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+
+/* =========================================================
+   FIXED SIDEBARS
+   Sidebar can scroll independently if it becomes long
+   ========================================================= */
+
+.student-sidebar {
+    position: fixed;
+
+    top: 76px;
+    left: 0;
+
+    width: 270px;
+    height: calc(100vh - 76px);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    z-index: 1000;
+}
+
+.admin-sidebar {
+    position: fixed;
+
+    top: 76px;
+    left: 0;
+
+    width: 270px;
+    height: calc(100vh - 76px);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .student-main {
+        margin-left: 245px;
+    }
+
+    .admin-main {
+        margin-left: 220px;
+    }
+
+    .student-sidebar {
+        width: 245px;
+    }
+
+    .admin-sidebar {
+        width: 220px;
+    }
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .student-main {
+        margin-left: 220px;
+        padding: 25px 25px 45px;
+    }
+
+    .admin-main {
+        margin-left: 210px;
+        padding: 25px 25px 45px;
+    }
+
+    .student-sidebar {
+        width: 220px;
+    }
+
+    .admin-sidebar {
+        width: 210px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    /* Student */
+
+    .student-layout {
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+    }
+
+    .student-layout-body {
+        min-height: auto;
+        height: auto;
+        overflow: visible;
+    }
+
+    .student-sidebar {
+        position: static;
+
+        width: 100%;
+        height: auto;
+        max-height: none;
+
+        overflow: visible;
+    }
+
+    .student-main {
+        width: 100%;
+
+        min-height: auto;
+        height: auto;
+
+        margin-left: 0;
+
+        padding: 22px 15px 45px;
+
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+
+    /* Admin */
+
+    .admin-layout {
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+    }
+
+    .admin-sidebar {
+        position: static;
+
+        width: 100%;
+        height: auto;
+        max-height: none;
+
+        overflow: visible;
+    }
+
+    .admin-main {
+        width: 100%;
+
+        min-height: auto;
+        height: auto;
+
+        margin-left: 0;
+
+        padding: 22px 15px 45px;
+
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 575px) {
+
+    .student-main,
+    .admin-main {
+        padding: 20px 12px 40px;
+    }
+}
+/* =========================================================
+   FINAL RESPONSIVE STATISTICS CARDS
+   ADMIN + STUDENT DASHBOARD
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   MAIN STATISTICS GRID
+   Desktop
+   --------------------------------------------------------- */
+
+.admin-stats,
+.dashboard-stats {
+    width: 100%;
+    max-width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* ---------------------------------------------------------
+   STATISTIC CARD
+   --------------------------------------------------------- */
+
+.admin-stat-card,
+.dashboard-stat-card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+
+/* ---------------------------------------------------------
+   CARD CONTENT
+   --------------------------------------------------------- */
+
+.admin-stat-card *,
+.dashboard-stat-card * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Prevent long titles from pushing the card */
+
+.admin-stat-card h1,
+.admin-stat-card h2,
+.admin-stat-card h3,
+.admin-stat-card h4,
+.admin-stat-card h5,
+.admin-stat-card h6,
+.admin-stat-card p,
+
+.dashboard-stat-card h1,
+.dashboard-stat-card h2,
+.dashboard-stat-card h3,
+.dashboard-stat-card h4,
+.dashboard-stat-card h5,
+.dashboard-stat-card h6,
+.dashboard-stat-card p {
+    max-width: 100%;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+
+/* ---------------------------------------------------------
+   STAT NUMBER
+   --------------------------------------------------------- */
+
+.admin-stat-card .stat-number,
+.dashboard-stat-card .stat-number {
+    max-width: 100%;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .admin-stats,
+    .dashboard-stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1199px) and (min-width: 992px) {
+
+    .admin-stats,
+    .dashboard-stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        gap: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   768px - 991px
+
+   2 CARDS PER ROW
+   ========================================================= */
+
+@media (max-width: 991px) and (min-width: 768px) {
+
+    .admin-stats,
+    .dashboard-stats {
+        width: 100%;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+
+    .admin-stat-card,
+    .dashboard-stat-card {
+        width: 100%;
+        min-width: 0;
+
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   576px - 767px
+
+   1 CARD PER ROW
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .admin-stats,
+    .dashboard-stats {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 15px;
+
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .admin-stat-card,
+    .dashboard-stat-card {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+
+        padding: 20px;
+
+        margin: 0;
+
+        box-sizing: border-box;
+    }
+
+
+    .admin-stat-card h1,
+    .admin-stat-card h2,
+    .admin-stat-card h3,
+    .admin-stat-card h4,
+    .admin-stat-card h5,
+    .admin-stat-card h6,
+    .admin-stat-card p,
+
+    .dashboard-stat-card h1,
+    .dashboard-stat-card h2,
+    .dashboard-stat-card h3,
+    .dashboard-stat-card h4,
+    .dashboard-stat-card h5,
+    .dashboard-stat-card h6,
+    .dashboard-stat-card p {
+        white-space: normal;
+
+        overflow-wrap: break-word;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   <= 575px
+   ========================================================= */
+
+@media (max-width: 575px) {
+
+    .admin-stats,
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .admin-stat-card,
+    .dashboard-stat-card {
+        width: 100%;
+        min-width: 0;
+
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .admin-stat-card h1,
+    .admin-stat-card h2,
+    .admin-stat-card h3,
+    .admin-stat-card h4,
+    .admin-stat-card h5,
+    .admin-stat-card h6,
+
+    .dashboard-stat-card h1,
+    .dashboard-stat-card h2,
+    .dashboard-stat-card h3,
+    .dashboard-stat-card h4,
+    .dashboard-stat-card h5,
+    .dashboard-stat-card h6 {
+        line-height: 1.3;
+
+        white-space: normal;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   <= 380px
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .admin-stats,
+    .dashboard-stats {
+        gap: 10px;
+    }
+
+
+    .admin-stat-card,
+    .dashboard-stat-card {
+        padding: 16px;
+    }
+
 }

@@ -86,7 +86,7 @@ function StudentDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
-              duration: 0.4,
+              duration: 0.1,
               delay: 0.1,
               ease: "easeOut",
             }}
@@ -123,7 +123,7 @@ function StudentDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
-              duration: 0.4,
+              duration: 0.2,
               delay: 0.15,
               ease: "easeOut",
             }}
@@ -160,7 +160,7 @@ function StudentDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
-              duration: 0.4,
+              duration: 0.2,
               delay: 0.2,
               ease: "easeOut",
             }}
@@ -197,7 +197,7 @@ function StudentDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
-              duration: 0.4,
+              duration: 0.2,
               delay: 0.25,
               ease: "easeOut",
             }}

@@ -31,7 +31,7 @@ function AdminDashboard() {
     try {
       await API.post("/admin/logout");
 
-      navigate("/admin-login");
+      navigate("/");
     } catch (error) {
       console.log(error.response?.data);
     }

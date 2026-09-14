@@ -11,7 +11,6 @@ const jwt = require("jsonwebtoken");
 
 const adminLogin = async (req, res) => {
     try {
-
         const { email, password } = req.body;
 
         // Find admin by email
@@ -33,7 +32,7 @@ const adminLogin = async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({
                 success: false,
-                message: "Invalid email or Password",
+                message: "Invalid email or password",
             });
         }
 
@@ -42,7 +41,7 @@ const adminLogin = async (req, res) => {
             {
                 id: admin._id,
                 email: admin.email,
-                role: admin.role,
+                role: "admin",
             },
             process.env.JWT_SECRET,
             {
@@ -50,32 +49,36 @@ const adminLogin = async (req, res) => {
             }
         );
 
-        // Store token in cookie
+        // Store JWT in cookie
+        const isProduction =
+            process.env.NODE_ENV === "production";
+
         res.cookie("token", token, {
             httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "lax",
             maxAge: 24 * 60 * 60 * 1000,
         });
 
-        // Send admin information to frontend
+        // Send safe admin information
         res.status(200).json({
             success: true,
             message: "Admin Login Successful",
-
             user: {
                 id: admin._id,
                 name: admin.name,
                 email: admin.email,
-                role: admin.role,
+                role: "admin",
             },
         });
 
     } catch (error) {
+        console.error("Admin Login Error:", error);
 
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
 
@@ -86,7 +89,6 @@ const adminLogin = async (req, res) => {
 
 const getAllComplaint = async (req, res) => {
     try {
-
         const complaints = await Complaint.find()
             .populate("student", "name email");
 
@@ -96,12 +98,12 @@ const getAllComplaint = async (req, res) => {
         });
 
     } catch (error) {
+        console.error("Get All Complaints Error:", error);
 
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
 
@@ -112,7 +114,6 @@ const getAllComplaint = async (req, res) => {
 
 const updateComplaintStatus = async (req, res) => {
     try {
-
         const { status } = req.body;
 
         const complaint = await Complaint.findById(
@@ -134,17 +135,20 @@ const updateComplaintStatus = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: "Complaint status Updated Successfully",
+            message: "Complaint status updated successfully",
             complaint,
         });
 
     } catch (error) {
+        console.error(
+            "Update Complaint Status Error:",
+            error
+        );
 
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
 
@@ -155,7 +159,6 @@ const updateComplaintStatus = async (req, res) => {
 
 const getComplaintStatus = async (req, res) => {
     try {
-
         const total = await Complaint.countDocuments();
 
         const pending = await Complaint.countDocuments({
@@ -172,7 +175,6 @@ const getComplaintStatus = async (req, res) => {
 
         res.status(200).json({
             success: true,
-
             stats: {
                 total,
                 pending,
@@ -182,12 +184,15 @@ const getComplaintStatus = async (req, res) => {
         });
 
     } catch (error) {
+        console.error(
+            "Get Complaint Statistics Error:",
+            error
+        );
 
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
 
@@ -198,22 +203,28 @@ const getComplaintStatus = async (req, res) => {
 
 const adminLogout = async (req, res) => {
     try {
+        const isProduction =
+            process.env.NODE_ENV === "production";
 
         // Remove JWT cookie
-        res.clearCookie("token");
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "lax",
+        });
 
         res.status(200).json({
             success: true,
-            message: "Admin Logout Successfully",
+            message: "Admin Logout Successful",
         });
 
     } catch (error) {
+        console.error("Admin Logout Error:", error);
 
         res.status(500).json({
             success: false,
             message: error.message,
         });
-
     }
 };
 

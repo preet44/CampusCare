@@ -1,11 +1,18 @@
 const User = require("../models/User");
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
+
+// =========================================================
+// STUDENT SIGNUP
+// =========================================================
 
 const signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
+        // Check if email already exists
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -15,20 +22,36 @@ const signup = async (req, res) => {
             });
         }
 
-        const hashPassword = await bcrypt.hash(password, 10);
+        // Hash password before storing
+        const hashedPassword = await bcrypt.hash(
+            password,
+            10
+        );
 
+        // Create student
         const user = await User.create({
             name,
             email,
-            password: hashPassword,
+            password: hashedPassword,
         });
+
+        // Never send password/hash to frontend
+        const safeUser = {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            role: "student",
+        };
 
         res.status(201).json({
             success: true,
             message: "Signup Successful",
-            user,
+            user: safeUser,
         });
+
     } catch (error) {
+        console.error("Signup Error:", error);
+
         res.status(500).json({
             success: false,
             message: error.message,
@@ -36,10 +59,16 @@ const signup = async (req, res) => {
     }
 };
 
+
+// =========================================================
+// STUDENT LOGIN
+// =========================================================
+
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        // Find student by email
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -49,7 +78,11 @@ const login = async (req, res) => {
             });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        // Compare password
+        const isMatch = await bcrypt.compare(
+            password,
+            user.password
+        );
 
         if (!isMatch) {
             return res.status(401).json({
@@ -58,10 +91,12 @@ const login = async (req, res) => {
             });
         }
 
+        // Create JWT token
         const token = jwt.sign(
             {
                 id: user._id,
                 email: user.email,
+                role: "student",
             },
             process.env.JWT_SECRET,
             {
@@ -69,7 +104,9 @@ const login = async (req, res) => {
             }
         );
 
-        const isProduction = process.env.NODE_ENV === "production";
+        // Cookie settings
+        const isProduction =
+            process.env.NODE_ENV === "production";
 
         res.cookie("token", token, {
             httpOnly: true,
@@ -78,12 +115,23 @@ const login = async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000,
         });
 
+        // Send only safe user information
+        const safeUser = {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            role: "student",
+        };
+
         res.status(200).json({
             success: true,
             message: "Login Successful",
-            user,
+            user: safeUser,
         });
+
     } catch (error) {
+        console.error("Login Error:", error);
+
         res.status(500).json({
             success: false,
             message: error.message,
@@ -91,10 +139,17 @@ const login = async (req, res) => {
     }
 };
 
+
+// =========================================================
+// STUDENT LOGOUT
+// =========================================================
+
 const logout = async (req, res) => {
     try {
-        const isProduction = process.env.NODE_ENV === "production";
+        const isProduction =
+            process.env.NODE_ENV === "production";
 
+        // Clear JWT cookie
         res.clearCookie("token", {
             httpOnly: true,
             secure: isProduction,
@@ -105,13 +160,21 @@ const logout = async (req, res) => {
             success: true,
             message: "Logout Successful",
         });
+
     } catch (error) {
+        console.error("Logout Error:", error);
+
         res.status(500).json({
             success: false,
             message: error.message,
         });
     }
 };
+
+
+// =========================================================
+// EXPORT CONTROLLERS
+// =========================================================
 
 module.exports = {
     signup,

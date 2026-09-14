@@ -11,7 +11,7 @@ function Navbar() {
     const handleLogout = async () => {
         await logout();
         setMenuOpen(false);
-        navigate("/login");
+        navigate("/");
     };
 
     const closeMenu = () => {

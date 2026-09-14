@@ -10,7 +10,11 @@ function ComplaintDetails() {
   const [complaint, setComplaint] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
+
+  // Delete states
+  const [deleteId, setDeleteId] = useState(null);
   const [deleting, setDeleting] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState("");
 
   useEffect(() => {
     fetchComplaint();
@@ -31,27 +35,39 @@ function ComplaintDetails() {
     }
   }
 
+  // Delete complaint
   async function handleDelete() {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this complaint?"
-    );
-
-    if (!confirmed) return;
-
-    setDeleting(true);
-    setMessage("");
+    if (!deleteId) return;
 
     try {
-      await API.delete(`/complaint/${id}`);
+      setDeleting(true);
 
-      navigate("/my-complaints");
+      await API.delete(`/complaint/${deleteId}`);
+
+      setDeleteId(null);
+
+      setDeleteMessage(
+        "Complaint deleted successfully."
+      );
+
+      // Go back to My Complaints after a short delay
+      setTimeout(() => {
+        navigate("/my-complaints");
+      }, 1000);
+
     } catch (error) {
-      setMessage(
+      setDeleteId(null);
+
+      setDeleteMessage(
         error.response?.data?.message ||
           "Failed to delete complaint."
       );
-    } finally {
+
       setDeleting(false);
+
+      setTimeout(() => {
+        setDeleteMessage("");
+      }, 3000);
     }
   }
 
@@ -120,11 +136,19 @@ function ComplaintDetails() {
 
             <div className="card-body p-4">
 
-              {/* Error / Success Message */}
+              {/* Error Message */}
 
               {message && (
                 <div className="alert alert-danger">
                   {message}
+                </div>
+              )}
+
+              {/* Delete Success Message */}
+
+              {deleteMessage && (
+                <div className="alert alert-success">
+                  {deleteMessage}
                 </div>
               )}
 
@@ -227,12 +251,12 @@ function ComplaintDetails() {
                 <button
                   type="button"
                   className="btn btn-danger"
-                  onClick={handleDelete}
+                  onClick={() =>
+                    setDeleteId(complaint._id)
+                  }
                   disabled={deleting}
                 >
-                  {deleting
-                    ? "Deleting..."
-                    : "Delete Complaint"}
+                  Delete Complaint
                 </button>
 
               </div>
@@ -245,11 +269,101 @@ function ComplaintDetails() {
 
       </div>
 
+      {/* ============================= */}
+      {/* DELETE CONFIRMATION MODAL */}
+      {/* ============================= */}
+
+      {deleteId && (
+        <div
+          className="modal fade show d-block"
+          tabIndex="-1"
+          role="dialog"
+          aria-modal="true"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+          }}
+        >
+
+          <div className="modal-dialog modal-dialog-centered">
+
+            <div className="modal-content">
+
+              {/* Modal Header */}
+
+              <div className="modal-header">
+
+                <h5 className="modal-title">
+                  Delete Complaint
+                </h5>
+
+                <button
+                  type="button"
+                  className="btn-close"
+                  aria-label="Close"
+                  onClick={() =>
+                    setDeleteId(null)
+                  }
+                  disabled={deleting}
+                ></button>
+
+              </div>
+
+              {/* Modal Body */}
+
+              <div className="modal-body">
+
+                <p className="mb-2">
+                  Are you sure you want to delete this
+                  complaint?
+                </p>
+
+                <small className="text-muted">
+                  This action cannot be undone.
+                </small>
+
+              </div>
+
+              {/* Modal Footer */}
+
+              <div className="modal-footer">
+
+                {/* Cancel */}
+
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() =>
+                    setDeleteId(null)
+                  }
+                  disabled={deleting}
+                >
+                  Cancel
+                </button>
+
+                {/* Confirm Delete */}
+
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={handleDelete}
+                  disabled={deleting}
+                >
+                  {deleting
+                    ? "Deleting..."
+                    : "Delete"}
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      )}
+
     </div>
   );
 }
 
 export default ComplaintDetails;
-
-
-              

@@ -1,6 +1,8 @@
 const Complaint = require("../models/Complaint");
 const streamUpload = require("../helpers/streamUpload");
 
+console.log("streamUpload type:", typeof streamUpload);
+
 const createComplaint = async (req, res, next) => {
     try {
         const { title, description, category } = req.body;
@@ -10,7 +12,6 @@ const createComplaint = async (req, res, next) => {
             publicId: "",
         };
 
-        // Upload image to Cloudinary
         if (req.file) {
             const result = await streamUpload(req.file.buffer);
 

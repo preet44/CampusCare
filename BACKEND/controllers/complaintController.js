@@ -1,15 +1,31 @@
 const Complaint = require("../models/Complaint");
-
+const streamUpload = require("../helpers/streamUpload");
 
 const createComplaint = async (req, res, next) => {
     try {
         const { title, description, category } = req.body;
+
+        let image = {
+            url: "",
+            publicId: "",
+        };
+
+        // Upload image to Cloudinary
+        if (req.file) {
+            const result = await streamUpload(req.file.buffer);
+
+            image = {
+                url: result.secure_url,
+                publicId: result.public_id,
+            };
+        }
 
         const complaint = await Complaint.create({
             title,
             description,
             category,
             student: req.user.id,
+            image,
         });
 
         res.status(201).json({
@@ -19,6 +35,8 @@ const createComplaint = async (req, res, next) => {
         });
 
     } catch (error) {
+        console.error("Create Complaint Error:", error);
+
         res.status(500).json({
             success: false,
             message: error.message,
@@ -124,7 +142,6 @@ const updatedComplaint = async (req, res) => {
 // To allow a student to update their own complaint,
 // but prevent them from updating someone else's complaint.
 
-
 const deleteComplaint = async (req, res) => {
     try {
         const complaint = await Complaint.findById(req.params.id);
@@ -161,7 +178,6 @@ const deleteComplaint = async (req, res) => {
         });
     }
 };
-
 
 module.exports = {
     createComplaint,

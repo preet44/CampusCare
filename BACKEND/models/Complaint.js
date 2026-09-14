@@ -48,12 +48,12 @@ const complaintSchema = new mongoose.Schema(
         image: {
             url: {
                 type: String,
-                default: null,
+                default: "",
             },
 
             publicId: {
                 type: String,
-                default: null,
+                default: "",
             },
         },
     },

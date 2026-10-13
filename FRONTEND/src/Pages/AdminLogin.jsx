@@ -20,7 +20,20 @@ function AdminLogin() {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
+/*AdminLogin()
+Main component for the Admin Login page.
+useNavigate()
+Used to redirect the admin to another page after login.
+useContext(AuthContext)
+Gets setUser from AuthContext.
+Used to store the logged-in admin's information globally.
+formData
+Stores the admin's email and password entered in the login form.
+message
+Stores success or error messages to display to the admin.
+loading
+Tracks whether the login request is in progress.
+Used to disable buttons/show loading state.*/
 
   // ==================================================
   // HANDLE INPUT
@@ -35,6 +48,13 @@ function AdminLogin() {
       [name]: value,
     }));
   }
+  /*handleChange()
+Handles changes in the email and password input fields.
+e.target gets the input element.
+name → identifies which field changed.
+value → gets the entered value.
+setFormData() → updates only that field while keeping the other fields unchanged.
+[name]: value → dynamically updates the field based on its name.*/
 
 
   // ==================================================
@@ -98,6 +118,22 @@ function AdminLogin() {
     }
   };
 
+/*handleSubmit()
+Handles the Admin Login form submission.
+e.preventDefault() → prevents page reload.
+setMessage("") → clears previous message.
+setLoading(true) → starts loading state.
+try — Login Request
+API.post("/admin/login", {...}) → sends email and password to the backend.
+response.data.user → gets the logged-in admin.
+setUser(response.data.user) → stores admin information in AuthContext.
+navigate("/admin-dashboard", { replace: true }) → redirects to the admin dashboard.
+replace: true → prevents going back to the login page using browser Back.
+catch
+Handles login errors.
+Gets the backend error message and displays it using setMessage().
+finally
+setLoading(false) → stops loading whether login succeeds or fails.*/
 
   return (
     <div className="container py-5">

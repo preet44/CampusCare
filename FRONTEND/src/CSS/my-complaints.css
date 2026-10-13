@@ -1,0 +1,193 @@
+/* Split from the provided CampusCare CSS. Original selectors and declarations only. */
+
+.complaint-card-top {
+  display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.complaint-card-bottom {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #edf0f4;
+}
+
+@media (max-width: 767px) {
+  .complaint-card-top {
+    flex-direction: column;
+  }
+}
+
+.my-complaints-page {
+  padding-top: 30px;
+    padding-bottom: 70px;
+}
+
+.my-complaints-header {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.my-complaints-header h2 {
+  margin: 0 0 8px;
+    font-size: 2.6rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.my-complaints-header p {
+  margin: 0;
+    color: #6c757d;
+    font-size: 1.15rem;
+}
+
+.my-complaints-create-btn {
+  padding: 10px 20px;
+    border-radius: 9px;
+    font-size: 1.05rem;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+}
+
+.my-complaints-create-btn:hover {
+  transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.my-complaints-create-btn:active {
+  transform: translateY(0);
+}
+
+.my-complaints-table-card {
+  width: 95%;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow:
+      0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.my-complaints-table {
+  margin: 0;
+}
+
+.my-complaints-table thead th {
+  padding: 17px 16px;
+    background: #212529;
+    color: #ffffff;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.my-complaints-table tbody td {
+  padding: 17px 16px;
+    vertical-align: middle;
+    border-color: #e9ecef;
+}
+
+.my-complaints-table tbody td:first-child {
+  font-weight: 600;
+}
+
+.my-complaints-table tbody tr {
+  transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+}
+
+.my-complaints-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .my-complaints-page {
+    padding-top: 40px;
+        padding-bottom: 40px;
+  }
+  .my-complaints-header {
+    align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 25px;
+  }
+  .my-complaints-header h2 {
+    font-size: 2rem;
+  }
+  .my-complaints-header p {
+    font-size: 1rem;
+  }
+  .my-complaints-create-btn {
+    width: 100%;
+  }
+  .my-complaints-table-card {
+    border-radius: 9px;
+  }
+  .my-complaints-table thead th,
+    .my-complaints-table tbody td {
+    padding: 13px 12px;
+  }
+}
+
+.my-complaints-table-card {
+  width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.my-complaints-table {
+  min-width: 700px;
+}
+
+@media (max-width: 767px) {
+  .complaint-card-top {
+    flex-direction: column;
+  }
+  .complaint-card-bottom {
+    align-items: flex-start;
+        flex-direction: column;
+  }
+  .my-complaints-page {
+    padding-top: 20px;
+        padding-bottom: 40px;
+  }
+  .my-complaints-header {
+    align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+  }
+  .my-complaints-header h2 {
+    font-size: 2rem;
+  }
+  .my-complaints-header p {
+    font-size: 1rem;
+  }
+  .my-complaints-create-btn {
+    width: 100%;
+  }
+  .my-complaints-table-card {
+    width: 100%;
+        border-radius: 9px;
+  }
+  .my-complaints-table {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 575px) {
+  .my-complaints-header h2 {
+    font-size: 1.75rem;
+  }
+}

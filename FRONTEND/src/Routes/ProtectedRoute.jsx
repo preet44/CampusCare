@@ -18,3 +18,15 @@ function ProtectedRoute({ children }) {
 
 export default ProtectedRoute;
 
+/*ProtectedRoute()
+Protects student/private pages from users who are not logged in.
+useContext(AuthContext)
+Gets user and loading from AuthContext.
+user → currently logged-in user.
+loading → authentication check status.
+if (loading)
+Shows "Checking authentication..." while checking the login status.
+if (!user)
+If no user is logged in → redirects to /login.
+return children
+If the user is logged in → allows access to the requested protected page.*/

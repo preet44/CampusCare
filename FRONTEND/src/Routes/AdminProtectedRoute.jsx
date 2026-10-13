@@ -21,3 +21,17 @@ function AdminProtectedRoute({ children }) {
 }
 
 export default AdminProtectedRoute;
+/*AdminProtectedRoute()
+Protects admin-only pages from unauthorized users.
+useContext(AuthContext)
+Gets user and loading from AuthContext.
+user → current logged-in user.
+loading → whether authentication is still being checked.
+if (loading)
+Shows "Checking authentication..." while checking login status.
+if (!user)
+If no user is logged in → redirects to /admin-login.
+if (user.role !== "admin")
+If the logged-in user is not an admin → redirects to /student-dashboard.
+return children
+If the user is logged in and has admin role, the requested admin page is displayed.*/

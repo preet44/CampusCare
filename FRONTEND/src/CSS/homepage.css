@@ -1,0 +1,631 @@
+/* Split from the provided CampusCare CSS. Original selectors and declarations only. */
+
+.home-hero {
+  min-height: 760px;
+    padding-top: 130px;
+    padding-bottom: 70px;
+    background:
+      radial-gradient(circle at 85% 25%,
+        rgba(13, 110, 253, 0.08),
+        transparent 28%),
+      linear-gradient(180deg,
+        #ffffff 0%,
+        #f8faff 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.home-hero::before {
+  content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: 80px;
+    right: -180px;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.035);
+    pointer-events: none;
+}
+
+.home-hero::after {
+  content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    bottom: -100px;
+    left: -80px;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.04);
+    pointer-events: none;
+}
+
+.home-hero-row {
+  min-height: 620px;
+    position: relative;
+    z-index: 2;
+}
+
+.home-hero .home-badge {
+  display: inline-flex;
+    align-items: center;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    border: 1px solid rgba(13, 110, 253, 0.12);
+    animation: homeFadeDown 0.7s ease both;
+}
+
+.home-title {
+  color: #172033;
+    font-size: clamp(3.4rem, 6vw, 5.8rem);
+    line-height: 1.02;
+    letter-spacing: -2.5px;
+    margin-top: 8px;
+    animation: homeFadeUp 0.8s ease 0.1s both;
+}
+
+.home-title .text-primary {
+  color: #0d6efd !important;
+}
+
+.home-description {
+  max-width: 760px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #64748b !important;
+    animation: homeFadeUp 0.8s ease 0.2s both;
+}
+
+.home-hero .home-btn {
+  min-height: 58px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: 600;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background-color 0.25s ease,
+      border-color 0.25s ease;
+    animation: homeFadeUp 0.8s ease 0.3s both;
+}
+
+.home-hero .home-btn:hover {
+  transform: translateY(-4px);
+    box-shadow:
+      0 12px 28px rgba(13, 110, 253, 0.18);
+}
+
+.home-hero .btn-primary.home-btn:hover {
+  background-color: #0b5ed7;
+}
+
+.home-hero .btn-outline-dark.home-btn:hover {
+  background-color: #172033;
+    color: #ffffff;
+    border-color: #172033;
+}
+
+.home-hero .row.g-3.mt-5 {
+  animation: homeFadeUp 0.8s ease 0.4s both;
+}
+
+.home-feature {
+  display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 12px;
+    border-radius: 12px;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease;
+}
+
+.home-feature:hover {
+  transform: translateY(-5px);
+    background-color: rgba(13, 110, 253, 0.035);
+}
+
+.home-feature-icon {
+  width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+    font-size: 1rem;
+    font-weight: 700;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease;
+}
+
+.home-feature:hover .home-feature-icon {
+  transform: scale(1.12) rotate(5deg);
+    background-color: rgba(13, 110, 253, 0.16);
+}
+
+.home-feature h6 {
+  color: #172033;
+}
+
+.home-feature small {
+  font-size: 0.9rem;
+    color: #64748b !important;
+}
+
+.home-visual {
+  min-height: 470px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: homeVisualIn 1s ease 0.25s both;
+}
+
+.home-visual-circle {
+  position: absolute;
+    width: 390px;
+    height: 390px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle,
+        rgba(13, 110, 253, 0.14),
+        rgba(13, 110, 253, 0.035) 60%,
+        transparent 70%);
+    animation: homeFloat 5s ease-in-out infinite;
+}
+
+.home-visual-content {
+  position: relative;
+    z-index: 2;
+    width: 310px;
+    padding: 48px 35px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(13, 110, 253, 0.08);
+    border-radius: 28px;
+    box-shadow:
+      0 25px 70px rgba(23, 32, 51, 0.1);
+    backdrop-filter: blur(10px);
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease;
+}
+
+.home-visual-content:hover {
+  transform: translateY(-8px);
+    box-shadow:
+      0 35px 85px rgba(23, 32, 51, 0.14);
+}
+
+.home-logo-large {
+  width: 82px;
+    height: 82px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: #0d6efd;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    box-shadow:
+      0 12px 30px rgba(13, 110, 253, 0.25);
+    animation: homeLogoPulse 3s ease-in-out infinite;
+}
+
+.home-visual-content h3 {
+  color: #172033;
+}
+
+.home-visual-content p {
+  line-height: 1.7;
+}
+
+#how-it-works {
+  position: relative;
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+    overflow: hidden;
+}
+
+#how-it-works .badge {
+  font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+}
+
+#how-it-works h2 {
+  color: #172033;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -1px;
+}
+
+#how-it-works .container>.text-center>p {
+  font-size: 1.05rem;
+}
+
+#how-it-works .home-step-card {
+  border-radius: 20px !important;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(23, 32, 51, 0.06) !important;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+}
+
+#how-it-works .home-step-card:hover {
+  transform: translateY(-9px);
+    border-color: rgba(13, 110, 253, 0.16) !important;
+    box-shadow:
+      0 20px 45px rgba(23, 32, 51, 0.1) !important;
+}
+
+#how-it-works .home-step-card .card-body {
+  min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-step-number {
+  width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background-color: #eaf2ff;
+    color: #0d6efd;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease;
+}
+
+.home-step-card:hover .home-step-number {
+  transform: scale(1.08) rotate(-3deg);
+    background-color: #0d6efd;
+    color: #ffffff;
+}
+
+#how-it-works .home-step-card h5 {
+  color: #172033;
+}
+
+#how-it-works .home-step-card p {
+  max-width: 340px;
+    line-height: 1.7;
+}
+
+section.py-5.bg-light {
+  padding-top: 100px !important;
+    padding-bottom: 100px !important;
+}
+
+section.py-5.bg-light .badge {
+  font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+}
+
+section.py-5.bg-light h2 {
+  color: #172033;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+section.py-5.bg-light .text-muted {
+  color: #64748b !important;
+}
+
+section.py-5.bg-light .d-flex.align-items-start.gap-3 {
+  padding: 12px;
+    margin-left: -12px;
+    border-radius: 12px;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease;
+}
+
+section.py-5.bg-light .d-flex.align-items-start.gap-3:hover {
+  transform: translateX(5px);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+section.py-5.bg-light .d-flex.align-items-start.gap-3 .text-primary {
+  flex: 0 0 auto;
+}
+
+.home-info-card {
+  border-radius: 24px !important;
+    border: 1px solid rgba(23, 32, 51, 0.06) !important;
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease;
+}
+
+.home-info-card:hover {
+  transform: translateY(-8px);
+    box-shadow:
+      0 25px 55px rgba(23, 32, 51, 0.12) !important;
+}
+
+.home-logo-small {
+  width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 52px;
+    border-radius: 14px;
+    background-color: #0d6efd;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow:
+      0 8px 20px rgba(13, 110, 253, 0.2);
+    transition:
+      transform 0.25s ease;
+}
+
+.home-info-card:hover .home-logo-small {
+  transform: rotate(-4deg) scale(1.05);
+}
+
+.home-info-card .bg-light {
+  border: 1px solid rgba(23, 32, 51, 0.05);
+}
+
+.home-info-card .badge {
+  font-weight: 600;
+}
+
+.home-info-card .row h4 {
+  transition:
+      transform 0.25s ease;
+}
+
+.home-info-card .row>div:hover h4 {
+  transform: translateY(-3px);
+}
+
+.home-cta {
+  position: relative;
+    overflow: hidden;
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+    background:
+      linear-gradient(135deg,
+        #0d6efd 0%,
+        #0861df 100%) !important;
+}
+
+.home-cta::before {
+  content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: -180px;
+    left: -100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+.home-cta::after {
+  content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    bottom: -170px;
+    right: -80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+}
+
+.home-cta .container {
+  position: relative;
+    z-index: 2;
+}
+
+.home-cta h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.8px;
+}
+
+.home-cta p {
+  opacity: 0.92;
+}
+
+.home-cta .home-btn {
+  min-width: 165px;
+    min-height: 56px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+}
+
+.home-cta .home-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.18) !important;
+}
+
+@keyframes homeFadeUp {
+  from {
+    opacity: 0;
+        transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+        transform: translateY(0);
+  }
+}
+
+@keyframes homeFadeDown {
+  from {
+    opacity: 0;
+        transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+        transform: translateY(0);
+  }
+}
+
+@keyframes homeVisualIn {
+  from {
+    opacity: 0;
+        transform: translateX(35px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+        transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes homeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes homeLogoPulse {
+  0%,
+  100% {
+    box-shadow:
+          0 12px 30px rgba(13, 110, 253, 0.25);
+  }
+  50% {
+    box-shadow:
+          0 16px 38px rgba(13, 110, 253, 0.35);
+  }
+}
+
+@media (max-width: 1199px) {
+  .home-title {
+    font-size: clamp(3rem, 6vw, 4.8rem);
+  }
+  .home-description {
+    max-width: 680px;
+  }
+  .home-visual-content {
+    width: 290px;
+  }
+  .home-visual-circle {
+    width: 350px;
+        height: 350px;
+  }
+}
+
+@media (max-width: 991px) {
+  .home-hero {
+    min-height: auto;
+        padding-top: 120px;
+        padding-bottom: 70px;
+  }
+  .home-hero-row {
+    min-height: auto;
+  }
+  .home-title {
+    letter-spacing: -1.8px;
+  }
+  .home-description {
+    margin-left: auto;
+        margin-right: auto;
+  }
+  .home-feature {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-hero {
+    padding-top: 105px;
+        padding-bottom: 60px;
+  }
+  .home-title {
+    font-size: 3rem;
+        line-height: 1.05;
+        letter-spacing: -1.5px;
+  }
+  .home-description {
+    font-size: 1.05rem;
+        line-height: 1.7;
+  }
+  .home-feature {
+    justify-content: flex-start;
+        padding: 12px 8px;
+  }
+  #how-it-works {
+    padding-top: 70px !important;
+        padding-bottom: 70px !important;
+  }
+  #how-it-works .home-step-card .card-body {
+    min-height: 270px;
+  }
+  section.py-5.bg-light {
+    padding-top: 70px !important;
+        padding-bottom: 70px !important;
+  }
+  .home-info-card {
+    margin-top: 10px;
+  }
+  .home-cta {
+    padding-top: 70px !important;
+        padding-bottom: 70px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .home-title {
+    font-size: 2.55rem;
+  }
+  .home-description {
+    font-size: 1rem;
+  }
+  .home-hero .home-btn {
+    width: 100%;
+  }
+  .home-feature {
+    padding-left: 0;
+  }
+  #how-it-works h2,
+    section.py-5.bg-light h2 {
+    font-size: 2rem;
+  }
+  .home-step-number {
+    width: 62px;
+        height: 62px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero *,
+    #how-it-works *,
+    section.py-5.bg-light *,
+    .home-cta * {
+    animation: none !important;
+        transition: none !important;
+  }
+}

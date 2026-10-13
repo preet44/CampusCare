@@ -291,6 +291,8 @@ function ManageComplaint() {
                                             }
 
                                         </div>
+                                        {/*   Checks whether complaint.createdAt exists.If it exists → converts it into a readable date using toLocaleDateString().
+                                        If it doesn't exist → displays "-".*/}
 
 
                                         {/* ================= DESCRIPTION ================= */}

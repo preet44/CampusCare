@@ -18,6 +18,11 @@ function AuthProvider({ children }) {
         userRef.current = userData;
         setUserState(userData);
     };
+    /*Purpose: Updates the logged-in user's data in two places.
+
+userData → new user information.
+userRef.current = userData → stores user data in useRef, which stays available without causing a re-render.
+setUserState(userData) → updates React state, so the UI re-renders with the new user information.*/
 
 
     const checkAuth = async () => {
@@ -34,15 +39,6 @@ function AuthProvider({ children }) {
 
         } catch (error) {
 
-            /*
-             * If there is no logged-in user, then
-             * clearing the user is correct.
-             *
-             * But if the user has just logged in,
-             * don't let an older /profile request
-             * remove that user.
-             */
-
             if (!userRef.current) {
                 setUser(null);
             }
@@ -53,12 +49,18 @@ function AuthProvider({ children }) {
 
         }
     };
-
+/*checkAuth()
+Checks whether the user is already logged in.
+API.get("/profile") → asks backend for the logged-in user's details.
+response.data.user → gets user information.
+If user exists → setUser(loggedInUser).
+If request fails and no user is stored → setUser(null).
+finally → setLoading(false) after the check is complete.*/
 
     useEffect(() => {
         checkAuth();
     }, []);
-
+/*Runs checkAuth() once when the component loads because dependency array [] is empty.*/
 
     const logout = async () => {
 
@@ -78,6 +80,10 @@ function AuthProvider({ children }) {
         }
     };
 
+/*logout()
+Sends POST /auth/logout to the backend.
+Backend removes/clears the authentication cookie.
+finally → setUser(null) to clear the user from React state.*/
 
     return (
         <AuthContext.Provider

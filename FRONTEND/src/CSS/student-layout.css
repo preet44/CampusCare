@@ -1,0 +1,305 @@
+/* Split from the provided CampusCare CSS. Original selectors and declarations only. */
+
+.student-layout {
+  height: 100vh;
+    background-color: #f8f9fc;
+    overflow: hidden;
+}
+
+.student-layout-body {
+  height: 100vh;
+    padding-top: 76px;
+    overflow: hidden;
+}
+
+.student-sidebar {
+  position: fixed;
+    top: 76px;
+    left: 0;
+    width: 270px;
+    height: calc(100vh - 76px);
+    background-color: #ffffff;
+    border-right: 1px solid #e6eaf0;
+    padding: 26px 18px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    z-index: 1000;
+    scroll-behavior: smooth;
+}
+
+.sidebar-header {
+  display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px 24px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #e9edf3;
+}
+
+.sidebar-logo {
+  width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaf2ff;
+    border-radius: 10px;
+    color: #0d6efd;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sidebar-header h6 {
+  color: #172033;
+}
+
+.sidebar-header small {
+  color: #7b8798 !important;
+}
+
+.sidebar-section {
+  flex: 1;
+}
+
+.sidebar-heading {
+  display: block;
+    padding: 0 14px;
+    margin-bottom: 12px;
+    color: #8994a5;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.sidebar-link {
+  display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 6px;
+    border-radius: 12px;
+    color: #4d5d73;
+    font-size: 1rem;
+    font-weight: 500;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+}
+
+.sidebar-link:hover {
+  color: #0d6efd;
+    background-color: #f2f6fc;
+    transform: translateX(2px);
+}
+
+.sidebar-link.active {
+  color: #0d6efd;
+    background-color: #eaf2ff;
+    font-weight: 600;
+}
+
+.sidebar-icon {
+  width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f6f8;
+    border-radius: 10px;
+    color: #536174;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.sidebar-link.active .sidebar-icon {
+  background-color: #ffffff;
+    color: #0d6efd;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+    padding-top: 20px;
+}
+
+.sidebar-help {
+  display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background-color: #f7faff;
+    border: 1px solid #dceaff;
+    border-radius: 14px;
+}
+
+.sidebar-help-icon {
+  width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #e8f1ff;
+    color: #0d6efd;
+    font-weight: 700;
+}
+
+.sidebar-help h6 {
+  color: #172033;
+}
+
+.sidebar-help small {
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .student-sidebar {
+    overflow-y: auto;
+        overflow-x: hidden;
+        position: fixed;
+        top: 0;
+        height: calc(100vh - 0px);
+  }
+}
+
+@media (max-width: 767px) {
+  .student-layout-body {
+    padding-top: 70px;
+  }
+  @media (max-width: 991px) {
+    .student-sidebar {
+      top: 76px;
+            width: 230px;
+            height: calc(100vh - 76px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            overscroll-behavior: contain;
+    }
+  }
+}
+
+.student-layout {
+  min-height: 100vh;
+    background-color: #f8f9fc;
+}
+
+.student-layout-body {
+  min-height: 100vh;
+    padding-top: 76px;
+}
+
+.student-sidebar {
+  position: fixed;
+    top: 76px;
+    left: 0;
+    width: 270px;
+    height: calc(100vh - 76px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media (max-width: 1199px) {
+  .student-sidebar {
+    width: 245px;
+  }
+}
+
+@media (max-width: 991px) {
+  .student-sidebar {
+    width: 220px;
+  }
+}
+
+@media (max-width: 767px) {
+  .student-layout-body {
+    padding-top: 70px;
+  }
+  .student-sidebar {
+    position: static;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        padding: 18px 15px;
+        border-right: none;
+        border-bottom: 1px solid #e6eaf0;
+  }
+  .sidebar-header {
+    padding: 0 5px 16px;
+        margin-bottom: 16px;
+  }
+  .sidebar-link {
+    padding: 11px 12px;
+  }
+  .sidebar-bottom {
+    margin-top: 12px;
+        padding-top: 12px;
+  }
+}
+
+.student-layout {
+  min-height: 100vh;
+    height: auto;
+    overflow: visible;
+}
+
+.student-layout-body {
+  min-height: calc(100vh - 76px);
+    height: auto;
+    overflow: visible;
+}
+
+.student-sidebar {
+  position: fixed;
+  
+    top: 76px;
+    left: 0;
+  
+    width: 270px;
+    height: calc(100vh - 76px);
+  
+    overflow-x: hidden;
+    overflow-y: auto;
+  
+    z-index: 1000;
+}
+
+@media (max-width: 1199px) {
+  .student-sidebar {
+    width: 245px;
+  }
+}
+
+@media (max-width: 991px) {
+  .student-sidebar {
+    width: 220px;
+  }
+}
+
+@media (max-width: 767px) {
+  .student-layout {
+    min-height: 100vh;
+        height: auto;
+        overflow: visible;
+  }
+  .student-layout-body {
+    min-height: auto;
+        height: auto;
+        overflow: visible;
+  }
+  .student-sidebar {
+    position: static;
+    
+        width: 100%;
+        height: auto;
+        max-height: none;
+    
+        overflow: visible;
+  }
+}

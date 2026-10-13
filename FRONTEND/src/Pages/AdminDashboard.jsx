@@ -12,6 +12,9 @@ function AdminDashboard() {
   });
 
   const navigate = useNavigate();
+/*AdminDashboard()
+Main component for the Admin Dashboard.
+stats stores complaint statistics: total, pending, in-progress, and resolved.*/
 
   useEffect(() => {
     const getStats = async () => {
@@ -26,6 +29,10 @@ function AdminDashboard() {
 
     getStats();
   }, []);
+  /*useEffect() → getStats()
+Runs once when the dashboard loads.
+API.get("/admin/dashboard") → gets complaint statistics from backend.
+setStats(response.data.stats) → updates the dashboard with received stats.*/
 
   const handleLogout = async () => {
     try {
@@ -36,6 +43,10 @@ function AdminDashboard() {
       console.log(error.response?.data);
     }
   };
+  /*handleLogout()
+Logs the admin out by calling POST /admin/logout.
+After successful logout, navigate("/") redirects to the home page.
+If an error occurs, it is printed in the console.*/
 
   return (
     <div className="dashboard-page">

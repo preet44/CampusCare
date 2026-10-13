@@ -1,0 +1,44 @@
+/* Split from the provided CampusCare CSS. Original selectors and declarations only. */
+
+footer {
+  position: relative;
+}
+
+.footer-link {
+  display: inline-block;
+    color: #adb5bd;
+    text-decoration: none;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+}
+
+.footer-link:hover {
+  color: white;
+    transform: translateX(4px);
+}
+
+.footer-description {
+  max-width: 430px;
+    line-height: 1.7;
+}
+
+footer .campus-logo {
+  width: 38px;
+    height: 38px;
+    border-radius: 10px;
+}
+
+@media (max-width: 575px) {
+  footer .container {
+    text-align: center;
+  }
+  .footer-description {
+    margin-left: auto;
+        margin-right: auto;
+  }
+  footer .campus-logo {
+    width: 36px;
+        height: 36px;
+  }
+}

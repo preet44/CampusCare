@@ -426,3 +426,35 @@ function CreateComplaint() {
 }
 
 export default CreateComplaint;
+
+/*1. CreateComplaint()
+Main React component for the Create Complaint page.
+Manages form data, image, preview, message, and loading state.
+2. useEffect()
+Runs when the preview changes.
+Cleans up the temporary image URL using URL.revokeObjectURL() to avoid memory leaks.
+3. handleChange()
+Handles changes in title, description, and category.
+Updates the corresponding field in formData.
+4. handleImageChange()
+Handles image selection.
+Checks:
+Image type → JPG, PNG, WEBP
+Image size → maximum 5 MB
+Stores the image in image.
+Creates an image preview using URL.createObjectURL().
+5. handleSubmit()
+Runs when the complaint form is submitted.
+Prevents page reload.
+Creates FormData and adds title, description, category, and optional image.
+Sends data to backend using:
+API.post("/complaint/create", data)
+Shows success/error message and redirects to My Complaints.
+6. navigate()
+Used to move the user to another page.
+Example: after successful submission → /my-complaints.
+7. Message
+Displays success/error messages to the user.
+8. motion
+Comes from Framer Motion.
+Adds animations to the page header, form card, and image preview.*/

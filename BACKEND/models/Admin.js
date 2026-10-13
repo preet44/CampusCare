@@ -30,6 +30,9 @@ const adminSchema = new mongoose.Schema(
     {
         timestamps: true,
     }
+    /*Purpose: Automatically adds two fields to the MongoDB document:
+createdAt → when the document was created.
+updatedAt → when the document was last updated.*/
 );
 
 const Admin = mongoose.model("Admin", adminSchema);

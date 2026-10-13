@@ -12,6 +12,7 @@ const feedbackSchema = new mongoose.Schema(
     student: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      //Purpose: Tells Mongoose that this field is related to the User collection/model.//
       required: true,
     },
 

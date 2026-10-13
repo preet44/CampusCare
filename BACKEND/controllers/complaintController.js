@@ -11,6 +11,10 @@ const createComplaint = async (req, res, next) => {
             url: "",
             publicId: "",
         };
+        /*Think of it as creating an empty space for image information before we know whether the student uploaded an image.
+        image is an object used to store Cloudinary image details.
+        url = image's online URL
+        publicId = Cloudinary's unique ID used to manage/delete the image.*/
 
         if (req.file) {
             const result = await streamUpload(req.file.buffer);
@@ -20,6 +24,14 @@ const createComplaint = async (req, res, next) => {
                 publicId: result.public_id,
             };
         }
+        /*Purpose: Checks whether the student has uploaded an image with the complaint.
+
+         req.file → contains the uploaded image provided by Multer.
+          req.file.buffer → contains the image data temporarily in memory.
+         streamUpload() → sends that image data to Cloudinary.
+        result.secure_url → Cloudinary's URL of the uploaded image.
+        result.public_id → Cloudinary's unique ID for that image.       
+       These details are stored in the image object.*/
 
         const complaint = await Complaint.create({
             title,

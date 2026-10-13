@@ -44,3 +44,15 @@ const errorMiddleware = (err, req, res, next) => {
 };
 
 module.exports = errorMiddleware;
+
+/*Purpose: Handles errors from the entire backend in one central place and sends a proper response to the frontend.
+
+AppError → creates custom errors with a message + status code.
+err → contains the error passed from controllers/middleware.
+CastError → handles invalid MongoDB ObjectId → returns 400 Invalid ID format.
+11000 error → handles duplicate values (e.g., existing email) → returns 409.
+ValidationError → handles Mongoose validation errors → collects all error messages and returns 400.
+statusCode → uses the error's status code; if unavailable, uses 500.
+message → sends the error message; if unavailable, sends "Internal server error".
+res.status().json() → sends a consistent error response to the frontend.
+stack → shown only in development to help developers debug errors.*/

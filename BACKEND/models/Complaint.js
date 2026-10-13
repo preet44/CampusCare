@@ -38,7 +38,7 @@ const complaintSchema = new mongoose.Schema(
             ],
             default: "Pending",
         },
-
+//enum = restricts the field to specific allowed values.//
         student: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",

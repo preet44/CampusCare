@@ -28,6 +28,13 @@ app.use(
         credentials: true,
     })
 );
+/*Purpose: Allows your React frontend to communicate with your Express backend, even though they run on different origins.
+
+cors() → enables CORS (Cross-Origin Resource Sharing).
+origin → specifies which frontend URLs are allowed to access the backend.
+localhost:5173 → used during local development.
+Render URL → used after deployment.
+credentials: true → allows the browser to send cookies (such as the JWT authentication cookie) with requests.*/
 
 
 /* =========================================================
